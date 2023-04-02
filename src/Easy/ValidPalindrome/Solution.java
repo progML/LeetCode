@@ -1,15 +1,14 @@
 package Easy.ValidPalindrome;
 
 class Solution {
-    public boolean isPalindrome(String s) {
-        s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
-        while (s.length() > 1) {
-            if (s.charAt(0) != s.charAt(s.length() - 1)) {
-                return false;
-            } else
-                s = s.substring(1, s.length() - 1);
+    public boolean isPalindrome(int x) {
+        int reverse = 0;
+        int temp = x;
+        while (x > 0) {
+            reverse = reverse * 10 + x % 10;
+            x /= 10;
         }
-        return true;
+        return temp == reverse;
     }
 
 }
