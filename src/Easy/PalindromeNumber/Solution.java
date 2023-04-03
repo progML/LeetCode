@@ -2,16 +2,17 @@ package Easy.PalindromeNumber;
 
 class Solution {
     public boolean isPalindrome(int x) {
-        int convertNumber = 0;
-        int temp = x;
-        if (x % 10 == x && x > 0) {
-            return true;
+        int revertNumber = 0;
+        if (x < 0 || (x != 0 && x % 10 == 0)) return false;
+        while (x > revertNumber) {
+            revertNumber = revertNumber * 10 + (x % 10);
+            x /= 10;
         }
-        while (temp > 0) {
-            convertNumber = convertNumber * 10 + (temp % 10);
-            temp /= 10;
-        }
-        return x == convertNumber;
+        return x == revertNumber || x == revertNumber / 10;
     }
 
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.isPalindrome(0));
+    }
 }
