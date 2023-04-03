@@ -2,14 +2,16 @@ package Easy.PalindromeNumber;
 
 class Solution {
     public boolean isPalindrome(int x) {
-        String res = String.valueOf(x);
-        while (res.length() > 1) {
-            if (res.indexOf(res.charAt(0)) != res.indexOf(res.charAt(res.length() - 1))) {
-                return false;
-            }
-            res = res.substring(1, res.length() - 1);
+        int convertNumber = 0;
+        int temp = x;
+        if (x % 10 == x && x > 0) {
+            return true;
         }
-        return true;
+        while (temp > 0) {
+            convertNumber = convertNumber * 10 + (temp % 10);
+            temp /= 10;
+        }
+        return x == convertNumber;
     }
 
 }
